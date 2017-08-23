@@ -1,0 +1,25 @@
+{
+  "name": "trontelegraf",
+  "version": "1.0.0",
+  "description": "thronemaster parsing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "html",
+    "parsing",
+    "game",
+    "of",
+    "thrones",
+    "thronemaster"
+  ],
+  "author": "Petter Hareim <phareim@gmail.com> (http://twitter.com/phareim)",
+  "license": "ISC",
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "osmosis": "^1.1.4",
+    "request": "^2.81.0"
+  }
+}
