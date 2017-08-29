@@ -1,20 +1,13 @@
-var osmosis = require('osmosis');
-
-var express = require('express');
-// var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-var app = express();
 
-const log_url = 'http://game.thronemaster.net/?game=131993&show=log';
-
-app.get('/', function (req, res) {
+function getLog(gameId, callBack) {
+    const log_url = 'http://game.thronemaster.net/?game=' + gameId + '&show=log';
     request(log_url, function (error, response, html) {
             var returnValue = [];
             if (error) {
                 return error;
             }
-
             var $ = cheerio.load(html);
             $('tr', 'table table').filter(function () {
                 var o = {};
@@ -39,11 +32,11 @@ app.get('/', function (req, res) {
                     returnValue.push(o);
                 }
             });
-            res.send(returnValue);
+            callBack(returnValue);
         }
     );
-});
-
-app.listen('8081');
-console.log('testing at port 8081');
-exports = module.exports = app;
+}
+// getLog(131993, function (value) {
+//    console.log(value);
+// });
+exports.getLog = getLog;
