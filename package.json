@@ -1,24 +1,28 @@
 {
-  "name": "trontelegraf",
-  "version": "1.0.0",
-  "description": "thronemaster parsing",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "keywords": [
-    "html",
-    "parsing",
-    "game",
-    "of",
-    "thrones",
-    "thronemaster"
-  ],
-  "author": "Petter Hareim <phareim@gmail.com> (http://twitter.com/phareim)",
-  "license": "ISC",
-  "devDependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "request": "^2.81.0",
-    "rxjs": "^5.4.3"
-  }
+    "name": "thronemaster-tools",
+    "version": "1.0.0",
+    "description": "Tools and functions for retrieving information from a running thronemaster-game.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node run.js"
+    },
+    "bin": {
+        "thronemaster-log": "./bin/run.js"
+    },
+    "keywords": [
+        "html",
+        "parsing",
+        "game of thrones",
+        "thronemaster"
+    ],
+    "author": "Petter Hareim <phareim@gmail.com> (http://twitter.com/phareim)",
+    "license": "ISC",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "request": "^2.81.0"
+    },
+    "devDependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "request": "^2.81.0"
+    }
 }
