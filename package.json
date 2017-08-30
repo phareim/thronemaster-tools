@@ -1,6 +1,7 @@
 {
     "name": "thronemaster-tools",
     "version": "1.0.0",
+    "repository": "https://github.com/phareim/thronemaster-tools",
     "description": "Tools and functions for retrieving information from a running thronemaster-game.",
     "main": "index.js",
     "scripts": {
