@@ -1,31 +1,32 @@
 {
-    "name": "thronemaster-tools",
-    "version": "1.0.2",
-    "repository": "https://github.com/phareim/thronemaster-tools",
-    "description": "Tools and functions for retrieving information from a running thronemaster-game.",
-    "main": "index.js",
-    "scripts": {
-        "start": "node ./bin/run.js"
-    },
-    "bin": {
-        "thronemaster-log": "./bin/run.js"
-    },
-    "keywords": [
-        "html",
-        "parsing",
-        "game of thrones",
-        "thronemaster"
-    ],
-    "author": "Petter Hareim <phareim@gmail.com> (http://twitter.com/phareim)",
-    "license": "ISC",
-    "dependencies": {
-        "cheerio": "^1.0.0-rc.2",
-        "request": "^2.81.0",
-        "colors": "^1.1.2"
-    },
-    "devDependencies": {
-        "cheerio": "^1.0.0-rc.2",
-        "colors": "^1.1.2",
-        "request": "^2.81.0"
-    }
+  "name": "thronemaster-tools",
+  "version": "1.0.3",
+  "repository": "https://github.com/phareim/thronemaster-tools",
+  "description": "Tools and functions for retrieving information from a running thronemaster-game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/run.js"
+  },
+  "bin": {
+    "thronemaster-log": "./bin/log.js",
+    "thronemaster-title": "./bin/title.js"
+  },
+  "keywords": [
+    "html",
+    "parsing",
+    "game of thrones",
+    "thronemaster"
+  ],
+  "author": "Petter Hareim <phareim@gmail.com> (http://twitter.com/phareim)",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.81.0",
+    "colors": "^1.1.2"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.81.0",
+    "colors": "^1.1.2"
+  }
 }
