@@ -1,11 +1,12 @@
 {
   "name": "thronemaster-tools",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "repository": "https://github.com/phareim/thronemaster-tools",
   "description": "Tools and functions for retrieving information from a running thronemaster-game.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/run.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "thronemaster-log": "./bin/log.js",
@@ -20,13 +21,10 @@
   "author": "Petter Hareim <phareim@gmail.com> (http://twitter.com/phareim)",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "request": "^2.81.0",
-    "colors": "^1.1.2"
+    "cheerio": "^1.0.0",
+    "colors": "^1.4.0"
   },
-  "devDependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "request": "^2.81.0",
-    "colors": "^1.1.2"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

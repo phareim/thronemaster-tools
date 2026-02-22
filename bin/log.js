@@ -1,34 +1,49 @@
 #!/usr/bin/env node
 
-var colors = require('colors');
-var thronemaster = require('../index.js');
-var args = process.argv.splice(process.execArgv.length + 2);
-var gameId = (args[0] ? args[0] : false);
-var moveId = (args[1] ? args[1] : false);
+import colors from 'colors';
+import { getLog } from '../index.js';
 
-function printStatus(s){
+const [, , gameId, moveId] = process.argv;
+
+/**
+ * Prints the status to the console.
+ * @param {object} s 
+ */
+function printStatus(s) {
   if (s) {
-    console.log(colors.inverse(' Turn ' + s.turn + ' (move ' + s.id + '): ' + s.player.bold + ' ' + s.gamePhase.toLowerCase() + ' '));
-    console.log('' + s.logEntry);
-    console.log('' + s.date.grey + '\n');
+    console.log(colors.inverse(` Turn ${s.turn} (move ${s.id}): ${colors.bold(s.player)} ${s.gamePhase.toLowerCase()} `));
+    console.log(`${s.logEntry}`);
+    console.log(`${colors.grey(s.date)}\n`);
+  } else {
+    console.log(colors.red('Move not found.'));
   }
 }
 
 if (gameId) {
-  thronemaster.getLog(gameId, function(status){
-    var l = status.length;
-    if (moveId === 'ALL') {
-      status.forEach(function(t){
-        printStatus(t);
-      });
-    } else if (moveId) {
-      printStatus(status[moveId - 1]);
-    } else {
-      var helpMessage = 'For other moves --> thronemaster ' + gameId + ' [move] (move: 1 - ' + l + ' | ALL)';
-      printStatus(status.pop());
-      console.log(helpMessage.grey);
+  try {
+    const status = await getLog(gameId);
+    
+    if (!status || status.length === 0) {
+      console.log(colors.red('No log entries found for this game ID.'));
+      process.exit(0);
     }
-  });
+
+    const count = status.length;
+    
+    if (moveId === 'ALL') {
+      status.forEach(printStatus);
+    } else if (moveId) {
+      const idx = parseInt(moveId, 10) - 1;
+      printStatus(status[idx]);
+    } else {
+      const lastStatus = status[status.length - 1];
+      printStatus(lastStatus);
+      const helpMessage = `For other moves --> thronemaster-log ${gameId} [move] (move: 1 - ${count} | ALL)`;
+      console.log(colors.grey(helpMessage));
+    }
+  } catch (error) {
+    console.error(colors.red(`Error retrieving game log: ${error.message}`));
+  }
 } else {
-  console.log('Usage:'.bold + ' > thronemaster-log [game-id]'.grey);
+  console.log(`${colors.bold('Usage:')} ${colors.grey('> thronemaster-log [game-id]')}`);
 }
