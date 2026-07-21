@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import colors from 'colors';
+import { styleText } from 'node:util';
 import { getHeading } from '../index.js';
 
 const [, , gameId] = process.argv;
@@ -9,13 +9,14 @@ if (gameId) {
   try {
     const heading = await getHeading(gameId);
     if (heading) {
-      console.log(colors.bold(heading));
+      console.log(styleText('bold', heading));
     } else {
-      console.log(colors.red('No title found for this game ID.'));
+      console.log(styleText('red', 'No title found for this game ID.'));
     }
   } catch (error) {
-    console.error(colors.red(`Error retrieving game heading: ${error.message}`));
+    console.error(styleText('red', `Error retrieving game heading: ${error.message}`));
+    process.exitCode = 1;
   }
 } else {
-  console.log(`${colors.bold('Usage:')} ${colors.grey('> thronemaster-title [game-id]')}`);
+  console.log(`${styleText('bold', 'Usage:')} ${styleText('gray', '> thronemaster-title [game-id]')}`);
 }

@@ -4,9 +4,9 @@ npm package for retrieving game info from Thronemaster (Game of Thrones strategy
 
 ## Tech Stack
 
-- Node.js (ES modules)
+- Node.js ≥ 20.12 (ES modules)
 - Cheerio for HTML parsing
-- Colors for CLI output
+- `node:util` `styleText` for CLI colors (no dependency)
 
 ## Commands
 
